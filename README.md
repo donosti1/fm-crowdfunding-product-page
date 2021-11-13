@@ -6,10 +6,10 @@ This is a solution to the [Crowdfunding product page challenge on Frontend Mento
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
+<!--   - [Screenshot](#screenshot)
+  - [Links](#links) -->
+<!-- - [My process](#my-process)
+  - [Built with](#built-with) -->
 - [Author](#author)
 
 
@@ -23,7 +23,7 @@ Users should be able to:
 - View the optimal layout for the site depending on their device's screen size
 - See hover states for all interactive elements on the page
 
-### Screenshot
+<!-- ### Screenshot
 
 ![](./screenshot.jpg)
 
@@ -38,7 +38,7 @@ Users should be able to:
 
 - [React](https://reactjs.org/) - JS library
 - [Chakra UI](https://chakra-ui.com/) - React Component library
-- Responsive Design
+- Responsive Design -->
 
 ## Author
 
