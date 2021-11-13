@@ -67,7 +67,7 @@ export default extendTheme({
           height: 12,
           paddingX: 10,
           ":hover, :focus": {
-            backgroundColor: `${colorScheme}.800`,
+            backgroundColor: `${colorScheme}.600`,
             color: "white",
           },
         }),
