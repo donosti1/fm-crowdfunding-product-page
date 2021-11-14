@@ -17,7 +17,10 @@ import {
 } from "@chakra-ui/react";
 import {ImBookmark} from "react-icons/im";
 
+import Header from "./Header";
 import {Card, LastCardContent, FirstCardContent} from "./Cards";
+import ModalStands from "./ModalStands";
+
 const App: React.FC = () => {
   const {isOpen, onOpen, onClose} = useDisclosure();
   const CTAButton = (props: any) => {
@@ -39,7 +42,7 @@ const App: React.FC = () => {
         color={isBookmarked ? "primary.600" : "secondary.500"}
         height={12}
         paddingLeft={0}
-        paddingRight={10}
+        paddingRight={6}
         onClick={() => setIsBookmarked(!isBookmarked)}
       >
         <Stack
@@ -62,6 +65,7 @@ const App: React.FC = () => {
       </Button>
     );
   };
+
   const TitleCard = (props: any) => {
     /* const link = `assets/icon-${props.title}.svg`; */
 
@@ -89,7 +93,7 @@ const App: React.FC = () => {
         <Text
           as="h2"
           color="secondary.500"
-          fontSize={["lg", "md"]}
+          fontSize={["lg", "sm"]}
           fontWeight="400"
           paddingBottom={6}
         >
@@ -119,10 +123,11 @@ const App: React.FC = () => {
           role="main"
           width="100%"
         >
+          <Header />
           <Stack
             alignSelf="center"
             paddingBottom="15vh"
-            paddingTop="40vh"
+            paddingTop="32vh"
             paddingX={[8, 0]}
             spacing={4}
             width={["100%", "container.md"]}
@@ -151,25 +156,7 @@ const App: React.FC = () => {
             >
               A beautiful & handcrafted monitor stand to reduce neck and eye strain.
             </Text>
-            <Stack>
-              <RadioGroup name="selectedStand">
-                <Stack
-                  alignItems="flex-start"
-                  borderColor="secondary.200"
-                  borderRadius="xl"
-                  borderWidth={1}
-                  padding={6}
-                >
-                  <Radio value="2" variant="ghost">
-                    <Text fontWeight="700">Pledge with no reward</Text>
-                    <Text color="secondary.400">
-                      Choose to support us without a reward if you simply believe in our project. As
-                      a backer, you will be signed up to receive product updates via email.
-                    </Text>
-                  </Radio>
-                </Stack>
-              </RadioGroup>
-            </Stack>
+            <ModalStands />
           </ModalBody>
         </ModalContent>
       </Modal>

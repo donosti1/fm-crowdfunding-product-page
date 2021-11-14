@@ -24,7 +24,7 @@ export default extendTheme({
   sizes: {
     container: {
       md: "660px",
-      xl: "1200px",
+      xl: "1440px",
     },
   },
   fonts: {
