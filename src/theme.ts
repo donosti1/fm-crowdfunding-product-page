@@ -65,7 +65,7 @@ export default extendTheme({
           borderRadius: "3xl",
           color: "white",
           height: 12,
-          paddingX: 10,
+          paddingX: 6,
           ":hover, :focus": {
             backgroundColor: `${colorScheme}.600`,
             color: "white",

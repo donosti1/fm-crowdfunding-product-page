@@ -38,7 +38,7 @@ const LastStand = (props: any) => {
             left
           </Text>
         </Stack>
-        <Button colorScheme="secondary" fontSize="sm" variant="ghost">
+        <Button colorScheme="secondary" fontSize="sm" variant="ghost" onClick={props.onClick}>
           {props.buttonLabel}
         </Button>
       </Stack>
@@ -95,7 +95,7 @@ const Stand = (props: any) => {
             left
           </Text>
         </Stack>
-        <Button colorScheme="primary" fontSize="sm" variant="ghost">
+        <Button colorScheme="primary" fontSize="sm" variant="ghost" onClick={props.onClick}>
           {props.buttonLabel}
         </Button>
       </Stack>
@@ -138,7 +138,7 @@ const FirstCardContent = () => {
   );
 };
 
-const LastCardContent = () => {
+const LastCardContent = ({onClick}: {onClick: () => void}) => {
   return (
     <Stack spacing={0}>
       <Text fontSize="xl" fontWeight="700" marginBottom={6}>
@@ -173,6 +173,7 @@ const LastCardContent = () => {
           description="You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list."
           pledge="Pledge $25 or more"
           title="Bamboo Stand"
+          onClick={onClick}
         />
         <Stand
           available="64"
@@ -180,6 +181,7 @@ const LastCardContent = () => {
           description="You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
           pledge="Pledge $75 or more"
           title="Black Edition Stand"
+          onClick={onClick}
         />
         <LastStand
           available="0"
@@ -187,6 +189,7 @@ const LastCardContent = () => {
           description="You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included."
           pledge="Pledge $200 or more"
           title="Mahogany Special Edition"
+          onClick={onClick}
         />
       </Stack>
     </Stack>

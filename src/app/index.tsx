@@ -23,6 +23,7 @@ import ModalStands from "./ModalStands";
 
 const App: React.FC = () => {
   const {isOpen, onOpen, onClose} = useDisclosure();
+  const [showMessage, setShowMessage] = React.useState<boolean>(false);
   const CTAButton = (props: any) => {
     return (
       <Button colorScheme="primary" variant="ghost" onClick={onOpen}>
@@ -134,29 +135,48 @@ const App: React.FC = () => {
           >
             <TitleCard />
             <Card componentToPassDown={<FirstCardContent />} />
-            <Card componentToPassDown={<LastCardContent />} />
+            <Card componentToPassDown={<LastCardContent onClick={onOpen} />} />
           </Stack>
         </Stack>
       </Stack>
-      <Modal isOpen={isOpen} size="3xl" onClose={onClose}>
+      <Modal isCentered isOpen={isOpen} size={showMessage ? "lg" : "3xl"} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent paddingBottom={showMessage ? 6 : 0}>
           <ModalHeader />
-          <ModalCloseButton />
+          {!showMessage && <ModalCloseButton />}
           <ModalBody>
-            <Text as="h2" fontSize="2xl" fontWeight="700" paddingBottom={2}>
-              Mastercraft Bamboo Monitor Riser
-            </Text>
-            <Text
-              as="h3"
-              color="secondary.500"
-              fontSize={["lg", "md"]}
-              fontWeight="400"
-              paddingBottom={6}
-            >
-              A beautiful & handcrafted monitor stand to reduce neck and eye strain.
-            </Text>
-            <ModalStands />
+            {showMessage && (
+              <Stack alignItems="center">
+                <Image alt="icon-check" src="/assets/icon-check.svg" />
+                <Text as="h3" fontSize="xl" fontWeight="700">
+                  Thanks for your support!
+                </Text>
+                <Text color="secondary.500" paddingY={6}>
+                  Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser
+                  worldwide. You will get an email once our campaign is completed.
+                </Text>
+                <Button alignSelf="center" colorScheme="primary" variant="ghost" onClick={onClose}>
+                  Got it
+                </Button>
+              </Stack>
+            )}
+            {!showMessage && (
+              <>
+                <Text as="h2" fontSize="2xl" fontWeight="700" paddingBottom={2}>
+                  Mastercraft Bamboo Monitor Riser
+                </Text>
+                <Text
+                  as="h3"
+                  color="secondary.500"
+                  fontSize={["lg", "md"]}
+                  fontWeight="400"
+                  paddingBottom={6}
+                >
+                  A beautiful & handcrafted monitor stand to reduce neck and eye strain.
+                </Text>
+                <ModalStands handleModalButton={() => setShowMessage(true)} />
+              </>
+            )}
           </ModalBody>
         </ModalContent>
       </Modal>
