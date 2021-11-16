@@ -25,7 +25,74 @@ interface StandElements {
 }
 const ModalStands = ({handleModalButton}: {handleModalButton: () => void}) => {
   const [selectedAccordion, setSelectedAccordion] = React.useState<"" | number>("");
-  const ModalStandItem = (props: StandElements) => {
+  const ModalStandItemMobile = (props: StandElements) => {
+    const pledgeLabel = props.reward ? (
+      <Text color="primary.500" fontWeight="700">
+        Pledge ${props.pledge} or more
+      </Text>
+    ) : null;
+    const availableLabel =
+      props.pledge && props.reward ? (
+        <Stack alignItems="center" direction={["row", "row"]}>
+          <Text fontSize="2xl" fontWeight="700">
+            {props.available}
+          </Text>
+          <Text color="secondary.500" fontSize="md" fontWeight="400">
+            left
+          </Text>
+        </Stack>
+      ) : null;
+    const disableStand =
+      props.available == 0 ? (
+        <Stack
+          style={{
+            position: "absolute",
+            bottom: "0px",
+            left: "0px",
+            width: "100%",
+            height: "100%",
+            background:
+              "linear-gradient(to bottom,  rgba(255,255,255,.6) 1%, rgba(255,255,255,.6) 5%)",
+            filter:
+              "progid:DXImageTransform.Microsoft.gradient( startColorstr='transparent', endColorstr='transparent',GradientType=0)",
+          }}
+        />
+      ) : null;
+
+    return (
+      <Stack backgroundColor="transparent" display={["flex", "none"]} position="relative">
+        <Stack alignItems="flex-start" direction="row" spacing={4}>
+          <Stack paddingTop={4} spacing={6}>
+            <Stack alignItems="center" direction={["row", "row"]} pointerEvents="none" spacing={4}>
+              <Radio
+                colorScheme="primary"
+                paddingTop={[0, 1]}
+                position="relative"
+                size="xl"
+                value={props.id}
+              />
+              <Stack alignItems="center" direction={["column", "row"]} spacing={[1, 8]}>
+                <Text
+                  _hover={{color: "primary.600", cursor: "pointer"}}
+                  alignSelf="flex-start"
+                  fontWeight="700"
+                >
+                  {props.title}
+                </Text>
+                {pledgeLabel}
+              </Stack>
+            </Stack>
+            <Text color="secondary.500" textAlign="left">
+              {props.description}
+            </Text>
+            <Text paddingBottom={[4, 0]}>{availableLabel}</Text>
+          </Stack>
+        </Stack>
+        {disableStand}
+      </Stack>
+    );
+  };
+  const ModalStandItemDesktop = (props: StandElements) => {
     const pledgeLabel = props.reward ? (
       <Text color="primary.500" fontWeight="700">
         Pledge ${props.pledge} or more
@@ -60,9 +127,15 @@ const ModalStands = ({handleModalButton}: {handleModalButton: () => void}) => {
       ) : null;
 
     return (
-      <Stack backgroundColor="transparent" position="relative">
-        <Stack alignItems="flex-start" direction="row">
-          <Radio colorScheme="primary" paddingTop={1} size="lg" value={props.id} />
+      <Stack backgroundColor="transparent" display={["none", "flex"]} position="relative">
+        <Stack alignItems="flex-start" direction="row" spacing={4}>
+          <Radio
+            colorScheme="primary"
+            paddingTop={[4, 1]}
+            position="relative"
+            size="xl"
+            value={props.id}
+          />
           <Stack>
             <Stack
               alignItems="center"
@@ -70,8 +143,12 @@ const ModalStands = ({handleModalButton}: {handleModalButton: () => void}) => {
               justifyContent="space-between"
               pointerEvents="none"
             >
-              <Stack alignItems="center" direction={["row", "row"]} spacing={8}>
-                <Text _hover={{color: "primary.600", cursor: "pointer"}} fontWeight="700">
+              <Stack alignItems="center" direction={["column", "row"]} spacing={[2, 8]}>
+                <Text
+                  _hover={{color: "primary.600", cursor: "pointer"}}
+                  alignSelf="flex-start"
+                  fontWeight="700"
+                >
                   {props.title}
                 </Text>
                 {pledgeLabel}
@@ -98,8 +175,21 @@ const ModalStands = ({handleModalButton}: {handleModalButton: () => void}) => {
           paddingTop={2}
         >
           <h2>
-            <AccordionButton _focus={{outline: "none"}} _hover={{backgroundColor: "transparent"}}>
-              <ModalStandItem
+            <AccordionButton
+              _focus={{outline: "none"}}
+              _hover={{backgroundColor: "transparent"}}
+              paddingX={[6, 3]}
+            >
+              <ModalStandItemDesktop
+                available={props.available}
+                description={props.description}
+                id={props.id}
+                isExpanded={isExpanded}
+                pledge={props.pledge}
+                reward={props.reward}
+                title={props.title}
+              />
+              <ModalStandItemMobile
                 available={props.available}
                 description={props.description}
                 id={props.id}
@@ -112,11 +202,23 @@ const ModalStands = ({handleModalButton}: {handleModalButton: () => void}) => {
           </h2>
           <AccordionPanel borderTopWidth={1}>
             {props.reward && (
-              <Stack alignItems="center" direction="row" justifyContent="space-between">
-                <Text color="secondary.500">Enter your pledge</Text>
+              <Stack
+                alignItems="center"
+                direction={["column", "row"]}
+                justifyContent="space-between"
+              >
+                <Text color="secondary.500" paddingY={[4, 0]}>
+                  Enter your pledge
+                </Text>
                 <Stack alignItems="center" direction="row">
                   <InputGroup width={24}>
-                    <InputLeftElement color="secondary.500" fontSize="lg" pointerEvents="none">
+                    <InputLeftElement
+                      alignItems="center"
+                      color="secondary.500"
+                      fontSize="lg"
+                      height={[12, 12]}
+                      pointerEvents="none"
+                    >
                       $
                     </InputLeftElement>
                     <Input
@@ -124,6 +226,7 @@ const ModalStands = ({handleModalButton}: {handleModalButton: () => void}) => {
                       _hover={{borderColor: "primary.500", cursor: "pointer"}}
                       borderRadius="3xl"
                       fontWeight="700"
+                      height={[12, 12]}
                       placeholder={props.pledge}
                       type="number"
                     />

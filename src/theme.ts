@@ -53,6 +53,14 @@ export default extendTheme({
         variant: "color",
       },
     },
+    Radio: {
+      sizes: {
+        xl: {
+          control: {w: {base: 6, lg: 5}, h: {base: 6, lg: 5}},
+          label: {fontSize: "lg"},
+        },
+      },
+    },
     Button: {
       sizes: {
         lg: {
@@ -62,10 +70,10 @@ export default extendTheme({
       variants: {
         ghost: ({colorScheme = "primary"}) => ({
           backgroundColor: `${colorScheme}.500`,
-          borderRadius: "3xl",
+          borderRadius: {base: "full", lg: "3xl"},
+          height: {base: 14, lg: 12},
+          paddingX: {base: 8, lg: 6},
           color: "white",
-          height: 12,
-          paddingX: 6,
           ":hover, :focus": {
             backgroundColor: `${colorScheme}.600`,
             color: "white",

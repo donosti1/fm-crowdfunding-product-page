@@ -43,7 +43,7 @@ const App: React.FC = () => {
         color={isBookmarked ? "primary.600" : "secondary.500"}
         height={12}
         paddingLeft={0}
-        paddingRight={6}
+        paddingRight={[0, 6]}
         onClick={() => setIsBookmarked(!isBookmarked)}
       >
         <Stack
@@ -52,7 +52,7 @@ const App: React.FC = () => {
           borderRadius="50%"
           height={12}
           justifyContent="center"
-          marginRight={4}
+          marginRight={[0, 4]}
           width={12}
         >
           <Icon
@@ -62,7 +62,7 @@ const App: React.FC = () => {
             width={4}
           />
         </Stack>
-        <Text>Bookmark</Text>
+        <Text display={["none", "block"]}>Bookmark</Text>
       </Button>
     );
   };
@@ -79,6 +79,7 @@ const App: React.FC = () => {
         paddingBottom={[6, 10]}
         paddingX={[4, 8]}
         spacing={0}
+        textAlign="center"
       >
         <Image
           alt="logo mastercraft"
@@ -98,7 +99,12 @@ const App: React.FC = () => {
         >
           A beautiful & handcrafted monitor stand to reduce neck and eye strain.
         </Text>
-        <Stack alignItems="center" direction="row" justifyContent="space-between" width="100%">
+        <Stack
+          alignItems="center"
+          direction="row"
+          justifyContent={["center", "space-between"]}
+          width="100%"
+        >
           <CTAButton />
           <BookmarkButton />
         </Stack>
@@ -117,7 +123,7 @@ const App: React.FC = () => {
           ]}
           backgroundPosition={["50%  0%", "50%  0%"]}
           backgroundRepeat={["no-repeat", "no-repeat"]}
-          backgroundSize={["cover", "contain"]}
+          backgroundSize={["contain", "contain"]}
           justifyContent="center"
           role="main"
           width="100%"
@@ -144,7 +150,7 @@ const App: React.FC = () => {
         onClose={onClose}
       >
         <ModalOverlay />
-        <ModalContent paddingBottom={showMessage ? 6 : 0}>
+        <ModalContent paddingBottom={showMessage ? 6 : 0} width={["90%", "100%"]}>
           <ModalHeader />
           {!showMessage && <ModalCloseButton />}
           <ModalBody>
@@ -154,7 +160,7 @@ const App: React.FC = () => {
                 <Text as="h3" fontSize="xl" fontWeight="700">
                   Thanks for your support!
                 </Text>
-                <Text color="secondary.500" paddingY={6}>
+                <Text color="secondary.500" paddingY={6} textAlign="center">
                   Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser
                   worldwide. You will get an email once our campaign is completed.
                 </Text>
@@ -165,14 +171,15 @@ const App: React.FC = () => {
             )}
             {!showMessage && (
               <>
-                <Text as="h2" fontSize="2xl" fontWeight="700" paddingBottom={2}>
+                <Text as="h2" fontSize={["xl", "2xl"]} fontWeight="700" paddingBottom={2}>
                   Back this project
                 </Text>
                 <Text
                   as="h3"
                   color="secondary.500"
-                  fontSize={["lg", "md"]}
+                  fontSize={["md", "md"]}
                   fontWeight="400"
+                  letterSpacing={["-.6px", "inherit"]}
                   paddingBottom={6}
                 >
                   Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?

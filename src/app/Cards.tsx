@@ -29,7 +29,7 @@ const LastStand = (props: any) => {
       >
         {props.description}
       </Text>
-      <Stack direction={["row", "row"]} justifyContent="space-between">
+      <Stack alignItems="center" direction={["row", "row"]} justifyContent="space-between">
         <Stack alignItems="center" direction={["row", "row"]}>
           <Text fontSize="3xl" fontWeight="700">
             {props.available}
@@ -38,7 +38,13 @@ const LastStand = (props: any) => {
             left
           </Text>
         </Stack>
-        <Button colorScheme="secondary" fontSize="sm" variant="ghost" onClick={props.onClick}>
+        <Button
+          colorScheme="secondary"
+          fontSize="sm"
+          size="lg"
+          variant="ghost"
+          onClick={props.onClick}
+        >
           {props.buttonLabel}
         </Button>
       </Stack>
@@ -65,12 +71,12 @@ const Stand = (props: any) => {
       borderColor="secondary.200"
       borderRadius="xl"
       borderWidth={1}
-      paddingX={[4, 8]}
-      paddingY={[6, 6]}
+      paddingX={[3, 8]}
+      paddingY={[4, 6]}
       spacing={0}
     >
-      <Stack direction={["row", "row"]} justifyContent="space-between">
-        <Text fontSize="lg" fontWeight="700" marginBottom={6}>
+      <Stack direction={["column", "row"]} justifyContent="space-between">
+        <Text fontSize="lg" fontWeight="700" marginBottom={[0, 6]}>
           {props.title}
         </Text>
         <Text color="primary.500" fontSize="md" fontWeight="500" marginBottom={6}>
@@ -86,7 +92,7 @@ const Stand = (props: any) => {
       >
         {props.description}
       </Text>
-      <Stack direction={["row", "row"]} justifyContent="space-between">
+      <Stack direction={["column", "row"]} justifyContent="space-between" spacing={[6, 2]}>
         <Stack alignItems="center" direction={["row", "row"]}>
           <Text fontSize="3xl" fontWeight="700">
             {props.available}
@@ -95,7 +101,13 @@ const Stand = (props: any) => {
             left
           </Text>
         </Stack>
-        <Button colorScheme="primary" fontSize="sm" variant="ghost" onClick={props.onClick}>
+        <Button
+          colorScheme="primary"
+          fontSize="sm"
+          variant="ghost"
+          width={[40, "auto"]}
+          onClick={props.onClick}
+        >
           {props.buttonLabel}
         </Button>
       </Stack>
@@ -109,7 +121,14 @@ const fundingStatus = [
   {id: 2, collect: "56", left: "days left"},
 ];
 const fundingCards = fundingStatus.map((fs) => (
-  <Stack key={fs.id} flex={1} paddingBottom={6} spacing={0}>
+  <Stack
+    key={fs.id}
+    flex={[null, 1]}
+    paddingBottom={[4, 6]}
+    paddingTop={[4, 0]}
+    spacing={0}
+    textAlign={["center", "left"]}
+  >
     <Text fontSize="2xl" fontWeight="700">
       {fs.collect}
     </Text>
@@ -121,7 +140,12 @@ const fundingCards = fundingStatus.map((fs) => (
 const FirstCardContent = () => {
   return (
     <Stack>
-      <Stack direction="row" divider={<StackDivider />} spacing={6} width="100%">
+      <Stack
+        direction={["column", "row"]}
+        divider={<StackDivider alignSelf={["center", "inherit"]} width={["30%", "0%"]} />}
+        spacing={[2, 6]}
+        width={["auto", "100%"]}
+      >
         {fundingCards}
       </Stack>
       <Stack>
