@@ -68,8 +68,6 @@ const App: React.FC = () => {
   };
 
   const TitleCard = (props: any) => {
-    /* const link = `assets/icon-${props.title}.svg`; */
-
     return (
       <Stack
         alignItems="center"
@@ -139,7 +137,12 @@ const App: React.FC = () => {
           </Stack>
         </Stack>
       </Stack>
-      <Modal isCentered isOpen={isOpen} size={showMessage ? "lg" : "3xl"} onClose={onClose}>
+      <Modal
+        isCentered={showMessage}
+        isOpen={isOpen}
+        size={showMessage ? "lg" : "3xl"}
+        onClose={onClose}
+      >
         <ModalOverlay />
         <ModalContent paddingBottom={showMessage ? 6 : 0}>
           <ModalHeader />
@@ -163,7 +166,7 @@ const App: React.FC = () => {
             {!showMessage && (
               <>
                 <Text as="h2" fontSize="2xl" fontWeight="700" paddingBottom={2}>
-                  Mastercraft Bamboo Monitor Riser
+                  Back this project
                 </Text>
                 <Text
                   as="h3"
@@ -172,7 +175,7 @@ const App: React.FC = () => {
                   fontWeight="400"
                   paddingBottom={6}
                 >
-                  A beautiful & handcrafted monitor stand to reduce neck and eye strain.
+                  Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
                 </Text>
                 <ModalStands handleModalButton={() => setShowMessage(true)} />
               </>
