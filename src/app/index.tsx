@@ -126,6 +126,7 @@ const App: React.FC = () => {
           backgroundSize={["contain", "contain"]}
           justifyContent="center"
           role="main"
+          spacing={0}
           width="100%"
         >
           <Header />

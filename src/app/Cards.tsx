@@ -142,7 +142,9 @@ const FirstCardContent = () => {
     <Stack>
       <Stack
         direction={["column", "row"]}
-        divider={<StackDivider alignSelf={["center", "inherit"]} width={["30%", "0%"]} />}
+        divider={
+          <StackDivider alignSelf={["center", "inherit"]} role="separator" width={["30%", "0%"]} />
+        }
         spacing={[2, 6]}
         width={["auto", "100%"]}
       >
